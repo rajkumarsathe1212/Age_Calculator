@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            background-color: black;
+            color: wheat;
+        }
+        #main{
+            height: 500px;
+        }
+        #main-div h1 {
+            text-align: center;
+            padding: 20px;
+        }
+        #main-div button {
+            padding: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.4s ease;
+            margin-left: 47%;
+            margin-top: 50px;
+        }
+        #main-div button:hover {
+            background-color: orangered;
+            color: white;
+        }
+        #div1 {
+            display: flex;
+            padding-top: 20px;
+            font-size: 20px;
+            background-color: rgb(22, 22, 22);
+            height: 100px;
+        }
+
+        #sp0 {
+            flex: 1;
+        }
+        #sp1 {
+            flex: 2;
+            /* border: 1px solid; */
+        }
+        #sp1 label {
+            padding-left: 50%;
+            font-weight: 600;
+            font-size: larger;
+        }
+        #sp1 input {
+            margin-left: 48%;
+            margin-top: 10px;
+            border-radius: 15px;
+            padding: 10px;
+            transition: 0.5s ease;
+            background-color: lightgreen;
+        }
+        #sp1 input:hover{
+            background-color: darksalmon;
+        }
+
+        #sp2 {
+            flex: 1;
+            /* border: 1px solid; */
+        }
+        #sp2 label {
+            font-weight: 600;
+            font-size: larger;
+            margin-left: 6%;
+        }
+        #sp2 input {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: lightgreen;
+            transition: 0.5s ease;
+            border-radius: 15px;
+        }
+        #sp2 input:hover{
+            background-color: darksalmon;
+        }
+
+        #sp3 {
+            /* border: 1px solid; */
+            flex: 2;
+        }
+        #sp3 label {
+            font-weight: 600;
+            font-size: larger;
+            margin-left: 4%;
+        }
+        #sp3 input {
+            margin-top: 10px;
+            margin-left: 4%;
+            border-radius: 15px;
+            background-color: lightgreen;
+            padding: 10px;
+            transition: 0.5s ease;
+        }
+        #sp3 input:hover{
+            background-color: darksalmon;
+        }
+        #sp4 {
+            flex: 1;
+        }
+        #age {
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 600;
+            font-size: larger;
+            background-color: rgb(22, 22, 22);
+            padding: 20px;
+        }
+        #times {
+            background-color: rgb(22, 22, 22);
+            text-align: center;
+            font-weight: 600;
+            font-size: larger;
+            padding-bottom: 10px;
+        }
+        #submit1 {
+            background-color: rgb(22, 22, 22);
+        }
+        #info {
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+        <div id="main-div">
+            <h1>Age Calculator</h1>
+            <div id="info">
+                <h3>Please Fill Your Information Corrrectly</h3>
+            </div>
+
+            <div id="div1">
+                <span id="sp0"></span>
+                <span id="sp1">
+                    <label for="">Date :- </label><br>
+                    <input type="text" name="date" id="date" placeholder="DD" minlength="1" maxlength="2" required>
+                </span>
+
+                <span id="sp2">
+                    <label for="">Month :- </label><br>
+                    <input type="text" name="month" id="month" placeholder="MM" minlength="1" maxlength="2" required>
+                </span>
+
+                <span id="sp3">
+                    <label for="">Year :- </label><br>
+                    <input type="text" name="year" id="year" placeholder="YYYY" minlength="1" maxlength="4" required>
+                </span>
+                <span id="sp4">
+
+                </span>
+            </div>
+         <div id="sumbit1">
+            <button  name="submit" id="submit" onclick="age()">Submit</button>
+         </div>
+
+
+            <article>
+                <div class="age" id="age"></div>
+                <div id="times"></div>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        function age() {
+           
+            var d1 = document.getElementById("date").value;
+            var m1 = document.getElementById("month").value;
+            var y1 = document.getElementById("year").value;
+
+            var date = new Date();
+
+            var d2 = date.getDate();
+            var m2 = 1 + date.getMonth();
+            var y2 = date.getFullYear();
+            var h3 = date.getHours();
+            var mn2 = date.getMinutes();
+            var sc2 = date.getSeconds();
+            var month = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+            if(d1>d2) {
+                d2 = d2 + month[m2-1];
+                m2 = m2 - 1;
+            }
+            if(m2>m1) {
+                m2 = m2 ;
+                y2 = y2 ;
+            }
+            var d = d2-d1;
+            var m = m2-m1;
+            var y = y2-y1;
+
+
+            document.getElementById("age").innerHTML = "Your age is " + y + " years " + m + " months " + d + " days";
+            document.getElementById("times").innerHTML = "& Time is " + h3 + " hours " + mn2 + " minutes " + sc2 + " seconds ";
+
+        }
+    </script>
+
+</body>
+
+</html>
