@@ -177,6 +177,11 @@
             var m1 = parseInt(document.getElementById("month").value);
             var y1 = parseInt(document.getElementById("year").value);
 
+            if (isNaN(d1) || isNaN(m1) || isNaN(y1)) {
+                document.getElementById("age").innerHTML = "Please enter a valid date.";
+                return;
+            }
+
             var date = new Date();
             var d2 = date.getDate();
             var m2 = 1 + date.getMonth();
@@ -189,9 +194,11 @@
             }
         
             if (d1 > d2) {
-                d2 = d2 + month[m2 - 2];
+                var prevMonthIndex = m2 - 2 < 0 ? 11 : m2 - 2;
+                d2 = d2 + month[prevMonthIndex];
                 m2 = m2 - 1;
             }
+
             if (m1 > m2) {
                 m2 = m2 + 12;
                 y2 = y2 - 1;
@@ -213,4 +220,5 @@
 </body>
 
 </html>
+
 
